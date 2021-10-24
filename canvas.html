@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>canvas</title>
+</head>
+<body>
+  <canvas width="400" height="400" id="canvas">该浏览器不支持canvas</canvas>
+  <script>
+    const drawing = document.getElementById('canvas');
+    let content = null;
+    if (drawing.getContext) {
+      content = drawing.getContext('2d');
+    };
+    content.strokeStyle = 'red';
+    content.fillStyle = 'yellow';
+    content.fillRect(10, 10, 300, 100)
+    const imgUrl = drawing.toDataURL('image/png');
+    console.log(imgUrl);
+    const Img = document.createElement('img');
+    Img.src = imgUrl;
+    document.body.appendChild(Img);
+  </script>
+</body>
+</html>
